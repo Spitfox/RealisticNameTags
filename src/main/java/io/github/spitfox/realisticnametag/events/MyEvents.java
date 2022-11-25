@@ -16,7 +16,6 @@ public class MyEvents
         if(entity.getCustomName() != null) {
             if (player.getMainHandItem().getItem() == Items.SHEARS) {
                 if (player.isCrouching()) {
-                    entity.removeTag("CustomName");
                     entity.setCustomName(null);
                     player.addItem(new ItemStack(Items.NAME_TAG,1));
                 }
