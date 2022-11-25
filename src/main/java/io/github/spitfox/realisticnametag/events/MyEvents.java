@@ -21,15 +21,15 @@ public class MyEvents
             if (player.getMainHandItem().getItem() == Items.SHEARS) {
                 if (player.isCrouching())
                 {
+                    String customName = entity.getCustomName().getString();
                     entity.setCustomName(null);
-                    ItemStack nametag = new ItemStack(Items.NAME_TAG, 1);
-                    CompoundTag tag = nametag.getOrCreateTag();
+                    ItemStack name_tag = new ItemStack(Items.NAME_TAG, 1);
+                    CompoundTag tag = name_tag.getOrCreateTag();
                     CompoundTag name = new CompoundTag();
-                    name.putString("Name", "{\"text\":\"test\"}");
+                    name.putString("Name", "{\"text\":\"" + customName + "\"}");
                     tag.put("display", name);
-                    System.out.print(tag.get("Name"));
-                    nametag.setTag(tag);
-                    player.addItem(nametag);
+                    name_tag.setTag(tag);
+                    player.addItem(name_tag);
                 }
             }
         }
