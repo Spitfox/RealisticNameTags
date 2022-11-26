@@ -1,7 +1,7 @@
 package io.github.spitfox.realisticnametag;
 
 import com.mojang.logging.LogUtils;
-import io.github.spitfox.realisticnametag.events.E_PlayerInteract;
+import io.github.spitfox.realisticnametag.events.MyEvents;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -16,8 +16,7 @@ public class Main {
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(new E_PlayerInteract());
-
+        MinecraftForge.EVENT_BUS.register(new MyEvents());
     }
 
 }

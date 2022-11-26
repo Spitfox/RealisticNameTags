@@ -4,15 +4,15 @@ license = "MIT"
 #issueTrackerURL=""
 [[mods]]
 modId = "realisticnametag"
-version = "0.1"
+version = "0.2"
 displayName = "Realistic Nametag"
-#updateJSONURL="" auto update checker
+#updateJSONURL=""
 #displayURL=""
 #logoFile=""
 credits="Spitfox"
 authors = "JustusWalterHelk, lu3arm"
 displayTest="MATCH_VERSION"
-description = '''Allows the player to reuse nametags. Right click a named entity with scissors.'''
+description = '''Allows the player to re-use nametags. Right click a named entity with a shear.'''
 [[dependencies.realisticnametag]]
 modId = "forge"
 mandatory = true
