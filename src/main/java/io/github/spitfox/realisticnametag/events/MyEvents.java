@@ -1,8 +1,10 @@
 package io.github.spitfox.realisticnametag.events;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +19,22 @@ public class MyEvents
     public void PlayerInteract(PlayerInteractEvent.EntityInteract event) {
         Entity entity = event.getTarget();
         Player player = event.getEntity();
-        if(entity.getCustomName() != null) {
+        BlockPos pos = event.getPos();
+        if(entity.getCustomName() != null)
+        {
+            if(event.getItemStack().getItem() == Items.NAME_TAG)
+            {
+                String customName = entity.getCustomName().getString();
+                ItemStack name_tag = new ItemStack(Items.NAME_TAG, 1);
+                CompoundTag tag = name_tag.getOrCreateTag();
+                CompoundTag name = new CompoundTag();
+                name.putString("Name", "{\"text\":\"" + customName + "\"}");
+                tag.put("display", name);
+                name_tag.setTag(tag);
+
+                event.getLevel().addFreshEntity(new ItemEntity(event.getLevel(), pos.getX(), pos.getY(), pos.getZ(), name_tag));
+            }
+
             if (player.getMainHandItem().getItem() == Items.SHEARS) {
                 if (player.isCrouching())
                 {
