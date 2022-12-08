@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'io.github.spitfox'
-version = '0.2'
+version = '0.35'
 
 java {
     archivesBaseName = 'realisticnametag'
@@ -11,7 +11,7 @@ java {
 }
 
 minecraft {
-    mappings channel: 'official', version: '1.19.2'
+    mappings channel: 'official', version: '1.19.3'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
@@ -75,9 +75,12 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories {}
+repositories {
+}
 
-dependencies {minecraft 'net.minecraftforge:forge:1.19.2-43.1.52'}
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.19.3-44.0.0'
+}
 
 jar {
     manifest {
@@ -94,4 +97,7 @@ jar {
 }
 
 jar.finalizedBy('reobfJar')
-tasks.withType(JavaCompile).configureEach {options.encoding = 'UTF-8'}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
